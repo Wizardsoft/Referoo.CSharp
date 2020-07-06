@@ -11,7 +11,7 @@ namespace Referoo.CSharp.Models
     public partial class GetQuestionnairesResponseData
     {
         [JsonProperty("num")]
-        public Int64 Num { get; set; }
+        public long Num { get; set; }
 
         [JsonProperty("createdDate")]
         public DateTimeOffset CreatedDate { get; set; }

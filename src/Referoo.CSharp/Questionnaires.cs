@@ -35,7 +35,7 @@ namespace Referoo.CSharp
         /// <param name="offset">The number of items to skip before starting to collect the result set</param>
         /// <param name="limit">The numbers of items to return. Up to 50 items can be returned at a time</param>
         /// <returns></returns>
-        public GetQuestionnairesResponse ListQuestionnaires(Int64? offset, Int64? limit)
+        public GetQuestionnairesResponse ListQuestionnaires(long? offset, long? limit)
         {
             var url = $"questionnaires/?";
 

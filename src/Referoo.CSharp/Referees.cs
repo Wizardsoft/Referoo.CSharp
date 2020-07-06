@@ -35,7 +35,7 @@ namespace Referoo.CSharp
         /// <param name="offset">The number of items to skip before starting to collect the result set</param>
         /// <param name="limit">The numbers of items to return. Up to 50 items can be returned at a time.</param>
         /// <returns></returns>
-        public GetRefereesResponse ListReferees(Int64? offset, Int64? limit)
+        public GetRefereesResponse ListReferees(long? offset, long? limit)
         {
             var url = $"referees/?";
 
@@ -55,7 +55,7 @@ namespace Referoo.CSharp
         /// </summary>
         /// <param name="num">Numeric ID of the candidates referee's to retrieve</param>
         /// <returns></returns>
-        public GetRefereesResponse RetrieveCandidatesReferees(Int64 num)
+        public GetRefereesResponse RetrieveCandidatesReferees(long num)
         {
             var url = $"candidate/{num}/referees";
             var json = HttpHelpers.HttpGet(url);
@@ -68,7 +68,7 @@ namespace Referoo.CSharp
         /// </summary>
         /// <param name="num">Numeric ID of the referee to retrieve</param>
         /// <returns></returns>
-        public GetRefereesResponse RetrieveSingleReferee(Int64 num)
+        public GetRefereesResponse RetrieveSingleReferee(long num)
         {
             var url = $"referee/{num}";
             var json = HttpHelpers.HttpGet(url);
@@ -81,7 +81,7 @@ namespace Referoo.CSharp
         /// </summary>
         /// <param name="num">Numeric ID of the referees report to download.</param>
         /// <returns></returns>
-        public string DownloadRefereesReference(Int64 num)
+        public string DownloadRefereesReference(long num)
         {
             var url = $"referee/{num}/reference";
             var json = HttpHelpers.HttpGet(url);
@@ -94,7 +94,7 @@ namespace Referoo.CSharp
         /// <param name="num">Numeric ID of the candidate to link the referee to</param>
         /// <param name="data">Data of referee to create</param>
         /// <returns></returns>
-        public GetRefereesResponse CreateReferee(Int64 num, PostRefereeParameter data)
+        public GetRefereesResponse CreateReferee(long num, PostRefereeParameter data)
         {
             var url = $"candidate/{num}/referee";
             var json = HttpHelpers.HttpPost(url, data);
@@ -121,7 +121,7 @@ namespace Referoo.CSharp
         /// <param name="num">Numeric ID of the referee to update</param>
         /// <param name="data">Data of referee to update</param>
         /// <returns></returns>
-        public GetRefereesResponse UpdateReferee(Int64 num, PutRefereeParameter data)
+        public GetRefereesResponse UpdateReferee(long num, PutRefereeParameter data)
         {
             var url = $"referee/{num}";
             var json = HttpHelpers.HttpPut(url, data);
@@ -134,7 +134,7 @@ namespace Referoo.CSharp
         /// </summary>
         /// <param name="num">Numeric ID of the referee to email</param>
         /// <returns></returns>
-        public string SendRefereeReferenceRequestEmail(Int64 num)
+        public string SendRefereeReferenceRequestEmail(long num)
         {
             var url = $"referee/{num}/email";
             var json = HttpHelpers.HttpPut(url, null);

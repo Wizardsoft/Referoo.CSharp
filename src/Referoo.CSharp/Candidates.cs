@@ -39,7 +39,7 @@ namespace Referoo.CSharp
         /// <param name="offset">The number of items to skip before starting to collect the result set</param>
         /// <param name="limit">The numbers of items to return. Up to 50 items can be returned at a time, 25 are returned by default</param>
         /// <returns></returns>
-        public GetCandidatesResponse ListCandidates(string email = null, Int64? offset = null, Int64? limit = null)
+        public GetCandidatesResponse ListCandidates(string email = null, long? offset = null, long? limit = null)
         {
             var url = $"candidates/?";
             if (!string.IsNullOrEmpty(email)) 
@@ -62,7 +62,7 @@ namespace Referoo.CSharp
         /// </summary>
         /// <param name="num">Numeric ID of the candidate to retrieve</param>
         /// <returns></returns>
-        public GetCandidatesResponse RetrieveCandidate(Int64 num)
+        public GetCandidatesResponse RetrieveCandidate(long num)
         {
             var url = $"candidate/{num}";
             var json = HttpHelpers.HttpGet(url);
@@ -75,7 +75,7 @@ namespace Referoo.CSharp
         /// </summary>
         /// <param name="num">Numeric ID of the candidates referee's to retrieve</param>
         /// <returns></returns>
-        public GetRefereesResponse RetrieveCandidatesReferees(Int64 num)
+        public GetRefereesResponse RetrieveCandidatesReferees(long num)
         {
             var url = $"candidate/{num}/referees";
             var json = HttpHelpers.HttpGet(url);
@@ -115,7 +115,7 @@ namespace Referoo.CSharp
         /// <param name="num">Numeric ID of the candidate to update</param>
         /// <param name="data">You do not need to update all the variables, only pass those you wish to update.</param>
         /// <returns></returns>
-        public GetCandidatesResponse UpdateCandidate(Int64 num, PutCandidateParameter data)
+        public GetCandidatesResponse UpdateCandidate(long num, PutCandidateParameter data)
         {
             var url = $"candidate/{num}";
             var json = HttpHelpers.HttpPut(url, data);
@@ -128,7 +128,7 @@ namespace Referoo.CSharp
         /// </summary>
         /// <param name="num">Numeric ID of the candidate to email</param>
         /// <returns></returns>
-        public string SendCandidateReferenceRequestEmail(Int64 num)
+        public string SendCandidateReferenceRequestEmail(long num)
         {
             var url = $"candidate/{num}/email";
             var json = HttpHelpers.HttpPut(url, null);

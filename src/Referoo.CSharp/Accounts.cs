@@ -36,7 +36,7 @@ namespace Referoo.CSharp
         /// <param name="offset">The number of items to skip before starting to collect the result set</param>
         /// <param name="limit">The numbers of items to return. Up to 50 items can be returned at a time</param>
         /// <returns></returns>
-        public GetAccountsResponse ListChildAccounts(Int64? offset, Int64? limit)
+        public GetAccountsResponse ListChildAccounts(long? offset, long? limit)
         {
             var url = $"accounts/?";
 
@@ -56,7 +56,7 @@ namespace Referoo.CSharp
         /// </summary>
         /// <param name="num">Numeric ID of the account to retrieve</param>
         /// <returns></returns>
-        public GetAccountsResponse RetrieveSingleChildAccount(Int64 num)
+        public GetAccountsResponse RetrieveSingleChildAccount(long num)
         {
             var url = $"account/{num}";
             var json = HttpHelpers.HttpGet(url);
@@ -84,7 +84,7 @@ namespace Referoo.CSharp
         /// <param name="num">Numeric ID of the account to update</param>
         /// <param name="data">Data of account to update</param>
         /// <returns></returns>
-        public GetAccountsResponse UpdateChildAccount(Int64 num, PostAccountParameter data)
+        public GetAccountsResponse UpdateChildAccount(long num, PostAccountParameter data)
         {
             var url = $"account/{num}";
             var json = HttpHelpers.HttpPut(url, data);
