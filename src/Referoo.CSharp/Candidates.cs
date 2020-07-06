@@ -53,6 +53,11 @@ namespace Referoo.CSharp
 
         }
 
+        /// <summary>
+        /// This API endpoint will return a json object containing a single candidate, based on the num provided in the API call.
+        /// </summary>
+        /// <param name="num">Numeric ID of the candidate to retrieve</param>
+        /// <returns></returns>
         public GetCandidatesResponse RetrieveCandidate(Int64 num)
         {
             var url = $"candidate/{num}";
