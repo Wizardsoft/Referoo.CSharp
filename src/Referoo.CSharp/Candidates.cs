@@ -35,7 +35,7 @@ namespace Referoo.CSharp
         }
         #endregion Singleton Pattern
 
-        public GetCandidatesResponse ListCandidates(string email, Int64? offset, Int64? limit)
+        public GetCandidatesResponse ListCandidates(string email = null, Int64? offset = null, Int64? limit = null)
         {
             var url = $"candidates/?";
             if (!string.IsNullOrEmpty(email)) 
@@ -47,24 +47,28 @@ namespace Referoo.CSharp
             if (limit != null)
                 url += $"limit={limit}&";
 
-            var json = HttpGet(url);
+            var json = HttpHelpers.HttpGet(url);
             var retVal = JsonConvert.DeserializeObject<GetCandidatesResponse>(json);
             return retVal;
 
         }
 
-        private static string HttpGet(string URI)
+        public GetCandidatesResponse RetrieveCandidate(Int64 num)
         {
-            var client = new RestClient(Configuration.BaseUrl);
-            var request = new RestRequest(URI);
-
-            request.AddHeader("Accept", "application/json");
-            request.AddHeader("Authorization", $"Bearer {Configuration.AccessToken}");
-
-            var response = client.Get(request);
-            var content = response.Content;
-
-            return content;
+            var url = $"candidate/{num}";
+            var json = HttpHelpers.HttpGet(url);
+            var retVal = JsonConvert.DeserializeObject<GetCandidatesResponse>(json);
+            return retVal;
         }
+
+        public GetRefereesResponse RetrieveCandidatesReferees(Int64 num)
+        {
+            var url = $"candidate/{num}/referees";
+            var json = HttpHelpers.HttpGet(url);
+            var retVal = JsonConvert.DeserializeObject<GetRefereesResponse>(json);
+            return retVal;
+        }
+
+
     }
 }
