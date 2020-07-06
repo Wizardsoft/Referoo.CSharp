@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Referoo.CSharp.Models
 {
-    class GetCandidatesResponse
+    public partial class GetCandidatesResponse
     {
         public GetCandidatesResponseData[] Data { get; set; }
     }
