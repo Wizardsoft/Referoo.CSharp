@@ -43,7 +43,8 @@ namespace Referoo.CSharp
 
             request.AddHeader("Accept", "application/json");
             request.AddHeader("Authorization", $"Bearer {Configuration.AccessToken}");
-            request.AddJsonBody(body);
+            if (body != null)
+                request.AddJsonBody(body);
 
             var response = client.Put(request);
             var content = response.Content;

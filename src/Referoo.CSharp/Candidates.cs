@@ -106,7 +106,7 @@ namespace Referoo.CSharp
         /// <returns></returns>
         public GetCandidateWithRefereesResponse CreateCandidateWithReferees(PostCandidateWithRefereesParameter data)
         {
-            var url = $"candidate";
+            var url = $"referee/quick";
             var json = HttpHelpers.HttpPost(url, data);
             var retVal = JsonConvert.DeserializeObject<GetCandidateWithRefereesResponse>(json);
             return retVal;
