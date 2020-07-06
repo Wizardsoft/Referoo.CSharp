@@ -31,6 +31,12 @@ namespace Referoo.CSharp
         }
         #endregion Singleton Pattern
 
+        /// <summary>
+        /// This endpoint will return an array of questionnaires linked to this account in order of creation date. Only public or published questionaires will be returned. Draft items are not accessible.
+        /// </summary>
+        /// <param name="offset">The number of items to skip before starting to collect the result set</param>
+        /// <param name="limit">The numbers of items to return. Up to 50 items can be returned at a time</param>
+        /// <returns></returns>
         public GetQuestionnairesResponse ListQuestionnaires(Int64? offset, Int64? limit)
         {
             var url = $"questionnaires/?";
