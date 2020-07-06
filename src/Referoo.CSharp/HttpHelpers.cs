@@ -20,5 +20,35 @@ namespace Referoo.CSharp
 
             return content;
         }
+
+        public static string HttpPost(string URI, object body)
+        {
+            var client = new RestClient(Configuration.BaseUrl);
+            var request = new RestRequest(URI);
+
+            request.AddHeader("Accept", "application/json");
+            request.AddHeader("Authorization", $"Bearer {Configuration.AccessToken}");
+            request.AddJsonBody(body);
+
+            var response = client.Post(request);
+            var content = response.Content;
+
+            return content;
+        }
+
+        public static string HttpPut(string URI, object body)
+        {
+            var client = new RestClient(Configuration.BaseUrl);
+            var request = new RestRequest(URI);
+
+            request.AddHeader("Accept", "application/json");
+            request.AddHeader("Authorization", $"Bearer {Configuration.AccessToken}");
+            request.AddJsonBody(body);
+
+            var response = client.Put(request);
+            var content = response.Content;
+
+            return content;
+        }
     }
 }

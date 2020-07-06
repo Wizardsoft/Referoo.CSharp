@@ -150,4 +150,13 @@ namespace Referoo.CSharp.Models
 
     }
 
+    public partial class GetCandidateWithRefereesResponse
+    {
+        [JsonProperty("candidate")]
+        public GetCandidatesResponseData Candidate { get; set; }
+
+        [JsonProperty("referees")]
+        public GetRefereesResponseData[] Referees { get; set; }
+    }
+
 }
