@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Referoo.CSharp.Models;
-using RestSharp;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Referoo.CSharp
 {

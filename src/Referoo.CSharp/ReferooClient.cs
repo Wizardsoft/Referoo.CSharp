@@ -9,9 +9,14 @@ namespace Referoo.CSharp
         /// </summary>
         /// <param name="accessToken"></param>
         /// <param name="refreshToken"></param>
-        /// <param name="baseUrl"></param>
-        public ReferooClient(string accessToken, string refreshToken = "", string baseUrl = "https://api.sandbox.referoo.com.au/oauth2/")
+        /// <param name="sandBox"></param>
+        public ReferooClient(string accessToken, string refreshToken = "", bool sandBox = false)
         {
+            string baseUrl = "https://api.referoo.com.au/oauth2/";
+
+            if(sandBox)
+                baseUrl = "https://api.sandbox.referoo.com.au/oauth2/";
+
             if (string.IsNullOrEmpty(accessToken))
                 throw new Exception("Empty AccessToken not Allowed");
 
@@ -23,14 +28,24 @@ namespace Referoo.CSharp
             Configuration.RefreshToken = refreshToken;
         }
 
-        //public Numbers Numbers
-        //{
-        //    get { return Numbers.Instance; }
-        //}
+        public Accounts Accounts
+        {
+            get { return Accounts.Instance; }
+        }
 
         public Candidates Candidates
         {
             get { return Candidates.Instance; }
+        }
+
+        public Questionnaires Questionnaires
+        {
+            get { return Questionnaires.Instance; }
+        }
+
+        public Referees Referees
+        {
+            get { return Referees.Instance; }
         }
     }
 }
