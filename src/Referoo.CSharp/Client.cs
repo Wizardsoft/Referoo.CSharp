@@ -27,5 +27,10 @@ namespace Referoo.CSharp
         //{
         //    get { return Numbers.Instance; }
         //}
+
+        public Candidates Candidates
+        {
+            get { return Candidates.Instance; }
+        }
     }
 }
