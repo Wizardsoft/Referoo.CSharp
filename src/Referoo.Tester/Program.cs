@@ -6,10 +6,10 @@ namespace Referoo.Tester
     {
         static void Main(string[] args)
         {
-            var accessToken = "";
-            var refreshToken = "";
+            var accessToken = "1";
+            var refreshToken = "1";
 
-            var referooClient = new Referoo.CSharp.ReferooClient(accessToken, refreshToken, true);
+            var referooClient = new Referoo.NetStandard.ReferooClient(accessToken, refreshToken, true);
 
             var questionnaries = referooClient.Questionnaires.ListQuestionnaires();
         }

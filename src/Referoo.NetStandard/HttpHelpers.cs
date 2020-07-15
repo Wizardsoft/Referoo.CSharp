@@ -1,7 +1,7 @@
 ﻿using RestSharp;
 using System;
 
-namespace Referoo.CSharp
+namespace Referoo.NetStandard
 {
     public static class HttpHelpers
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Referoo.CSharp
+namespace Referoo.NetStandard
 {
     public partial class ReferooClient
     {

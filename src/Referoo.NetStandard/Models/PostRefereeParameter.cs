@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Referoo.CSharp.Models
+namespace Referoo.NetStandard.Models
 {
     public partial class PostRefereeParameter
     {

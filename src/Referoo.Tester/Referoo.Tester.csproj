@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Referoo.CSharp.csproj" />
+    <ProjectReference Include="..\Referoo.NetStandard\Referoo.NetStandard.csproj" />
   </ItemGroup>
 
 </Project>

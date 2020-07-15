@@ -8,7 +8,7 @@
     <owners>Wizardsoft</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">Apache-2.0</license>
-    <projectUrl>https://github.com/Wizardsoft/Referoo.CSharp</projectUrl>
+    <projectUrl>https://github.com/Wizardsoft/Referoo.NetStandard</projectUrl>
     <description>Allows you to programatically interface with Referoo, the leading online reference-checking tool.</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright Wizardsoft 2020</copyright>

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace Referoo.CSharp.Models
+namespace Referoo.NetStandard.Models
 {
 
     public partial class GetRefereesResponse

@@ -1,4 +1,4 @@
-﻿namespace Referoo.CSharp
+﻿namespace Referoo.NetStandard
 {
     public class Configuration
     {

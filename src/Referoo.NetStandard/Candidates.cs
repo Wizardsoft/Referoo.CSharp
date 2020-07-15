@@ -1,12 +1,11 @@
 ﻿using Newtonsoft.Json;
-using Referoo.CSharp.Models;
+using Referoo.NetStandard.Models;
 using System;
 
-namespace Referoo.CSharp
+namespace Referoo.NetStandard
 {
     public class Candidates
     {
-        private static Guid _getCandidatesToken;
         #region Singleton Pattern
 
         //private static variables for the singleton pattern
