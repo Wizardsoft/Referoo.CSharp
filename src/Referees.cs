@@ -35,15 +35,11 @@ namespace Referoo.CSharp
         /// <param name="offset">The number of items to skip before starting to collect the result set</param>
         /// <param name="limit">The numbers of items to return. Up to 50 items can be returned at a time.</param>
         /// <returns></returns>
-        public GetRefereesResponse ListReferees(long? offset, long? limit)
+        public GetRefereesResponse ListReferees(long offset = 0, long limit = 50)
         {
             var url = $"referees/?";
 
-            if (offset != null)
-                url += $"offset={offset}&";
-
-            if (limit != null)
-                url += $"limit={limit}&";
+            url = HttpHelpers.OffSetsandLimits(url, offset, limit);
 
             var json = HttpHelpers.HttpGet(url);
             var retVal = JsonConvert.DeserializeObject<GetRefereesResponse>(json);
