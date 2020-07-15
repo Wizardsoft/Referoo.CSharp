@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Referoo.NetStandard.Models;
 using System;
+using System.Collections.Generic;
 
 namespace Referoo.NetStandard
 {
@@ -35,14 +36,14 @@ namespace Referoo.NetStandard
         /// <param name="offset">The number of items to skip before starting to collect the result set</param>
         /// <param name="limit">The numbers of items to return. Up to 50 items can be returned at a time</param>
         /// <returns></returns>
-        public GetQuestionnairesResponse ListQuestionnaires(long offset = 0, long limit = 50)
+        public List<GetQuestionnairesResponse> ListQuestionnaires(long offset = 0, long limit = 50)
         {
-            var url = $"questionnaires/?";
+            var url = $"questionnaires?";
 
             url = HttpHelpers.OffSetsandLimits(url, offset, limit);
 
             var json = HttpHelpers.HttpGet(url);
-            var retVal = JsonConvert.DeserializeObject<GetQuestionnairesResponse>(json);
+            var retVal = JsonConvert.DeserializeObject<List<GetQuestionnairesResponse>>(json);
             return retVal;
         }
     }

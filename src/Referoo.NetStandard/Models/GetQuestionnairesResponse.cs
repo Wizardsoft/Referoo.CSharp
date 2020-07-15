@@ -5,11 +5,6 @@ namespace Referoo.NetStandard.Models
 {
     public partial class GetQuestionnairesResponse
     {
-        public GetQuestionnairesResponseData[] Data { get; set; }
-    }
-
-    public partial class GetQuestionnairesResponseData
-    {
         [JsonProperty("num")]
         public long Num { get; set; }
 
@@ -18,9 +13,6 @@ namespace Referoo.NetStandard.Models
 
         [JsonProperty("updatedDate")]
         public DateTimeOffset UpdatedDate { get; set; }
-
-        [JsonProperty("membersNum")]
-        public int MembersNum { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }

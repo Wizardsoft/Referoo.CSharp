@@ -37,7 +37,7 @@ namespace Referoo.NetStandard
         /// <returns></returns>
         public GetRefereesResponse ListReferees(long offset = 0, long limit = 50)
         {
-            var url = $"referees/?";
+            var url = $"referees?";
 
             url = HttpHelpers.OffSetsandLimits(url, offset, limit);
 

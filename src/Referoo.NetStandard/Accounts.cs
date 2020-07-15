@@ -38,7 +38,7 @@ namespace Referoo.NetStandard
         /// <returns></returns>
         public GetAccountsResponse ListChildAccounts(long offset = 0, long limit = 50)
         {
-            var url = $"accounts/?";
+            var url = $"accounts?";
 
             url = HttpHelpers.OffSetsandLimits(url, offset, limit);
 
@@ -87,6 +87,5 @@ namespace Referoo.NetStandard
             var retVal = JsonConvert.DeserializeObject<GetAccountsResponse>(json);
             return retVal;
         }
-
     }
 }

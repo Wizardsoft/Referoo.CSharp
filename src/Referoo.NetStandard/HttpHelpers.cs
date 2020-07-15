@@ -26,6 +26,7 @@ namespace Referoo.NetStandard
         {
             URI = URI.TrimEnd('&');
             URI = URI.TrimEnd('?');
+            URI = URI.TrimEnd('/');
 
             var client = new RestClient(Configuration.BaseUrl);
             var request = new RestRequest(URI);

@@ -40,7 +40,7 @@ namespace Referoo.NetStandard
         /// <returns></returns>
         public GetCandidatesResponse ListCandidates(string email = null, long? offset = null, long? limit = null)
         {
-            var url = $"candidates/?";
+            var url = $"candidates?";
             if (!string.IsNullOrEmpty(email)) 
                 url += $"email={email}&";
 
