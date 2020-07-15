@@ -2,7 +2,7 @@
 
 [![Build status](https://dev.azure.com/wizardsoftglobal/Recruit%20Wizard/_apis/build/status/Referoo.CSharp)](https://dev.azure.com/wizardsoftglobal/Recruit%20Wizard/_build/latest?definitionId=51)
 
-![Nuget](https://img.shields.io/nuget/v/Referoo.CSharp)
+[![Nuget](https://img.shields.io/nuget/v/Referoo.CSharp)](https://www.nuget.org/packages/Referoo.CSharp)
 
 C# SDK for the [Referoo](https://referoo.com.au) Reference taking Platform
 
