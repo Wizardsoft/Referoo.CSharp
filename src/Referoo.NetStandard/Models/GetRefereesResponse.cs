@@ -3,7 +3,6 @@ using System;
 
 namespace Referoo.NetStandard.Models
 {
-
     public partial class GetRefereesResponse
     {
         public GetRefereesResponseData[] Data { get; set; }
@@ -66,7 +65,7 @@ namespace Referoo.NetStandard.Models
         public string CandidatesNum { get; set; }
 
         [JsonProperty("invite_sent_date")]
-        public DateTimeOffset InviteSentDate { get; set; }
+        public string InviteSentDate { get; set; }
 
         [JsonProperty("invite_sent")]
         public int InviteSent { get; set; }
@@ -82,6 +81,5 @@ namespace Referoo.NetStandard.Models
 
         [JsonProperty("response_date")]
         public int ResponseDate { get; set; }
-
     }
 }
