@@ -77,11 +77,11 @@ namespace Referoo.NetStandard
         /// </summary>
         /// <param name="num">Numeric ID of the referees report to download.</param>
         /// <returns></returns>
-        public string DownloadRefereesReference(long num)
+        public byte[] DownloadRefereesReference(long num)
         {
             var url = $"referee/{num}/reference";
-            var json = HttpHelpers.HttpGet(url);
-            return json;
+            var data = HttpHelpers.DownloadData(url);
+            return data;
         }
 
         /// <summary>

@@ -48,6 +48,18 @@ namespace Referoo.NetStandard
             }
         }
 
+        public static byte[] DownloadData(string URI)
+        {
+            var client = new RestClient(Configuration.BaseUrl);
+            var request = new RestRequest(URI);
+
+            request.AddHeader("Authorization", $"Bearer {Configuration.AccessToken}");
+
+            var response = client.DownloadData(request);
+
+            return response;
+        }
+
         public static string HttpPost(string URI, object body)
         {
             var client = new RestClient(Configuration.BaseUrl);
