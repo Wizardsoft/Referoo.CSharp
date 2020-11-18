@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Referoo.NetStandard.Models;
+using System;
+using System.Net;
 
 namespace Referoo.NetStandard
 {
@@ -26,6 +29,16 @@ namespace Referoo.NetStandard
             Configuration.BaseUrl = baseUrl;
             Configuration.AccessToken = accessToken;
             Configuration.RefreshToken = refreshToken;
+        }
+
+        public void RefreshToken(string clientId, string clientSecret)
+        {
+            string refreshEndpoint = "https://api.referoo.com.au/oauth/token";
+            refreshEndpoint += $"?client_id={clientId}&client_secret={clientSecret}&grant_type=refresh_token&refresh_token={Configuration.RefreshToken}";
+            var json = HttpHelpers.HttpPost(refreshEndpoint, null);
+            var obj = JsonConvert.DeserializeObject<RefreshTokenResponse>(json);
+            Configuration.AccessToken = obj.AccessToken;
+            Configuration.RefreshToken = obj.RefreshToken;
         }
 
         public Accounts Accounts
