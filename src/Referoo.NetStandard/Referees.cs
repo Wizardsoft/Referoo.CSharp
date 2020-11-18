@@ -136,5 +136,17 @@ namespace Referoo.NetStandard
             var json = HttpHelpers.HttpPut(url, null);
             return json;
         }
+
+        /// <summary>
+        /// This endpoint will permanently delete a referee, it's log records and reference (if one was created).
+        /// </summary>
+        /// <param name="num">Numeric ID of the referee to delete</param>
+        /// <returns></returns>
+        public string DeleteReferee(long num)
+        {
+            var url = $"referee/{num}";
+            var json = HttpHelpers.HttpDelete(url, null);
+            return json;
+        }
     }
 }

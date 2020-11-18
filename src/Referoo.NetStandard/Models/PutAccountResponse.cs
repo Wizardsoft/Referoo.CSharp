@@ -1,14 +1,16 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Referoo.NetStandard.Models
 {
-    public partial class GetRefereesResponse
+    public partial class PutAccountResponse
     {
-        public GetRefereesResponseData[] Data { get; set; }
+        public PutAccountResponseData[] Data { get; set; }
     }
 
-    public partial class GetRefereesResponseData
+    public partial class PutAccountResponseData
     {
         [JsonProperty("num")]
         public long Num { get; set; }
@@ -65,7 +67,7 @@ namespace Referoo.NetStandard.Models
         public string CandidatesNum { get; set; }
 
         [JsonProperty("invite_sent_date")]
-        public string InviteSentDate { get; set; }
+        public DateTimeOffset InviteSentDate { get; set; }
 
         [JsonProperty("invite_sent")]
         public int InviteSent { get; set; }
@@ -84,8 +86,5 @@ namespace Referoo.NetStandard.Models
 
         [JsonProperty("custom_data")]
         public string CustomData { get; set; }
-
-        [JsonProperty("ip_matches_candidate")]
-        public bool IpMatchesCandidate { get; set; }
     }
 }

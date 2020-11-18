@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Referoo.NetStandard.Models;
+using System;
+using System.Net;
 
 namespace Referoo.NetStandard
 {
@@ -28,6 +31,26 @@ namespace Referoo.NetStandard
             Configuration.RefreshToken = refreshToken;
         }
 
+        public RefreshTokenResponse RefreshToken(string clientId, string clientSecret)
+        {
+            if (string.IsNullOrEmpty(Configuration.RefreshToken))
+                throw new Exception("Empty RefreshToken not Allowed");
+            
+            if (string.IsNullOrEmpty(clientId))
+                throw new Exception("Empty ClientId not Allowed");
+            
+            if (string.IsNullOrEmpty(clientSecret))
+                throw new Exception("Empty ClientSecret not Allowed");
+
+            string refreshEndpoint = "https://api.referoo.com.au/oauth/token";
+            refreshEndpoint += $"?client_id={clientId}&client_secret={clientSecret}&grant_type=refresh_token&refresh_token={Configuration.RefreshToken}";
+            var json = HttpHelpers.HttpPost(refreshEndpoint, null);
+            var obj = JsonConvert.DeserializeObject<RefreshTokenResponse>(json);
+            Configuration.AccessToken = obj.AccessToken;
+            Configuration.RefreshToken = obj.RefreshToken;
+            return obj;
+        }
+
         public Accounts Accounts
         {
             get { return Accounts.Instance; }
@@ -46,6 +69,11 @@ namespace Referoo.NetStandard
         public Referees Referees
         {
             get { return Referees.Instance; }
+        }
+
+        public Brands Brands
+        {
+            get { return Brands.Instance; }
         }
     }
 }

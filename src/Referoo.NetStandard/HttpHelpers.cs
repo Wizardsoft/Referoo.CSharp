@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
 using System;
+using System.Net;
 
 namespace Referoo.NetStandard
 {
@@ -37,7 +38,7 @@ namespace Referoo.NetStandard
 
             var response = client.Get(request);
 
-            if(response.StatusCode == System.Net.HttpStatusCode.OK)
+            if(response.StatusCode == HttpStatusCode.OK)
             {
                 var content = response.Content;
                 return content;
@@ -75,7 +76,7 @@ namespace Referoo.NetStandard
 
             var response = client.Post(request);
 
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created)
             {
                 var content = response.Content;
                 return content;
@@ -100,6 +101,29 @@ namespace Referoo.NetStandard
             var content = response.Content;
 
             return content;
+        }
+
+        public static string HttpDelete(string URI, object body)
+        {
+            var client = new RestClient(Configuration.BaseUrl);
+            var request = new RestRequest(URI);
+
+            request.AddHeader("Accept", "application/json");
+            request.AddHeader("Authorization", $"Bearer {Configuration.AccessToken}");
+            if (body != null)
+                request.AddJsonBody(body);
+            var response = client.Delete(request);
+
+            if (response.StatusCode == HttpStatusCode.NoContent)
+            {
+                var content = response.Content;
+                return content;
+            }
+            else
+            {
+                throw new Exception($"HttpStatusCode: {response.StatusCode}. Error: {response.Content}");
+            }
+
         }
     }
 }

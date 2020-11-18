@@ -38,6 +38,9 @@ namespace Referoo.NetStandard.Models
         public string QuestionnairesNum { get; set; }
 
         [JsonProperty("send_email_reminders")]
-        public int SendEmailReminders { get; set; }
+        public bool SendEmailReminders { get; set; }
+
+        [JsonProperty("custom_data")]
+        public string CustomData { get; set; }
     }
 }
