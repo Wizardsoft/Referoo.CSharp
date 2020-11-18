@@ -34,7 +34,13 @@ namespace Referoo.NetStandard
         public RefreshTokenResponse RefreshToken(string clientId, string clientSecret)
         {
             if (string.IsNullOrEmpty(Configuration.RefreshToken))
-                throw new Exception("Empty RefreshToken cannot be used");
+                throw new Exception("Empty RefreshToken not Allowed");
+            
+            if (string.IsNullOrEmpty(clientId))
+                throw new Exception("Empty ClientId not Allowed");
+            
+            if (string.IsNullOrEmpty(clientSecret))
+                throw new Exception("Empty ClientSecret not Allowed");
 
             string refreshEndpoint = "https://api.referoo.com.au/oauth/token";
             refreshEndpoint += $"?client_id={clientId}&client_secret={clientSecret}&grant_type=refresh_token&refresh_token={Configuration.RefreshToken}";
