@@ -31,14 +31,18 @@ namespace Referoo.NetStandard
             Configuration.RefreshToken = refreshToken;
         }
 
-        public void RefreshToken(string clientId, string clientSecret)
+        public RefreshTokenResponse RefreshToken(string clientId, string clientSecret)
         {
+            if (string.IsNullOrEmpty(Configuration.RefreshToken))
+                throw new Exception("Empty RefreshToken cannot be used");
+
             string refreshEndpoint = "https://api.referoo.com.au/oauth/token";
             refreshEndpoint += $"?client_id={clientId}&client_secret={clientSecret}&grant_type=refresh_token&refresh_token={Configuration.RefreshToken}";
             var json = HttpHelpers.HttpPost(refreshEndpoint, null);
             var obj = JsonConvert.DeserializeObject<RefreshTokenResponse>(json);
             Configuration.AccessToken = obj.AccessToken;
             Configuration.RefreshToken = obj.RefreshToken;
+            return obj;
         }
 
         public Accounts Accounts

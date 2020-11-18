@@ -2,7 +2,7 @@
 
 namespace Referoo.NetStandard.Models
 {
-    class RefreshTokenResponse
+    public class RefreshTokenResponse
     {
         [JsonProperty("access_token")]
         public string AccessToken { get; set; }
