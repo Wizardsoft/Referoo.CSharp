@@ -47,5 +47,10 @@ namespace Referoo.NetStandard
         {
             get { return Referees.Instance; }
         }
+
+        public Brands Brands
+        {
+            get { return Brands.Instance; }
+        }
     }
 }

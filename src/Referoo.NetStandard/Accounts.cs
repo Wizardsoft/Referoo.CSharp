@@ -66,12 +66,11 @@ namespace Referoo.NetStandard
         /// </summary>
         /// <param name="data">Data of account to create</param>
         /// <returns></returns>
-        public GetAccountsResponse CreateAccount(PostAccountParameter data)
+        public string CreateAccount(PostAccountParameter data)
         {
             var url = $"account";
             var json = HttpHelpers.HttpPost(url, data);
-            var retVal = JsonConvert.DeserializeObject<GetAccountsResponse>(json);
-            return retVal;
+            return json;
         }
 
         /// <summary>
@@ -80,11 +79,23 @@ namespace Referoo.NetStandard
         /// <param name="num">Numeric ID of the account to update</param>
         /// <param name="data">Data of account to update</param>
         /// <returns></returns>
-        public GetAccountsResponse UpdateChildAccount(long num, PostAccountParameter data)
+        public PutAccountResponse UpdateChildAccount(long num, PostAccountParameter data)
         {
             var url = $"account/{num}";
             var json = HttpHelpers.HttpPut(url, data);
-            var retVal = JsonConvert.DeserializeObject<GetAccountsResponse>(json);
+            var retVal = JsonConvert.DeserializeObject<PutAccountResponse>(json);
+            return retVal;
+        }
+
+        /// <summary>
+        /// Returns the details of of the user who is currently connected to the API
+        /// </summary>
+        /// <returns></returns>
+        public GetAccountsResponseData GetMyAccount ()
+        {
+            var url = "me";
+            var json = HttpHelpers.HttpGet(url);
+            var retVal = JsonConvert.DeserializeObject<GetAccountsResponseData>(json);
             return retVal;
         }
     }

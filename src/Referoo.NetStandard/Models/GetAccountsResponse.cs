@@ -43,5 +43,8 @@ namespace Referoo.NetStandard.Models
         [JsonProperty("office_phone")]
         public string OfficePhone { get; set; }
 
+        [JsonProperty("website")]
+        public string Website { get; set; }
+
     }
 }

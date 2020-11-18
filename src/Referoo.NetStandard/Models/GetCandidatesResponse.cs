@@ -44,6 +44,12 @@ namespace Referoo.NetStandard.Models
         [JsonProperty("company")]
         public string Company { get; set; }
 
+        [JsonProperty("ip_address")]
+        public string IpAddress { get; set; }
+
+        [JsonProperty("response_date")]
+        public DateTimeOffset ResponseDate { get; set; }
+
         [JsonProperty("questionnairesNum")]
         public int QuestionnairesNum { get; set; }
 
@@ -62,9 +68,14 @@ namespace Referoo.NetStandard.Models
         [JsonProperty("declined")]
         public int Declined { get; set; }
 
-        [JsonProperty("response_date")]
-        public DateTimeOffset ResponseDate { get; set; }
+        [JsonProperty("candidate_locked")]
+        public int CandidateLocked { get; set; }
 
+        [JsonProperty("custom_data")]
+        public string CustomData { get; set; }
+
+        [JsonProperty("brandsNum")]
+        public int brandsNum { get; set; }
     }
 
 

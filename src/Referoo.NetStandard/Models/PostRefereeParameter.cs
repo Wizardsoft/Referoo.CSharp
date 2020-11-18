@@ -38,7 +38,9 @@ namespace Referoo.NetStandard.Models
         public string QuestionnairesNum { get; set; } //The Questionnaire used for this reference.
 
         [JsonProperty("send_email_reminders", Required = Required.Always)]
-        public int SendEmailReminders { get; set; } //Set to one if the referee is receiving email reminders
+        public bool SendEmailReminders { get; set; } //Set to one if the referee is receiving email reminders
 
+        [JsonProperty("custom_data")]
+        public string CustomData { get; set; } //If this is set to 1 this particular referee will be sent reminders. It is recommended that you set this value to 1 by default.
     }
 }

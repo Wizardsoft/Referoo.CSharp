@@ -14,6 +14,9 @@ namespace Referoo.NetStandard.Models
         [JsonProperty("updatedDate")]
         public DateTimeOffset UpdatedDate { get; set; }
 
+        [JsonProperty("membersNum")]
+        public int MembersNum { get; set; }
+
         [JsonProperty("title")]
         public string Title { get; set; }
 
