@@ -125,5 +125,22 @@ namespace Referoo.NetStandard
             }
 
         }
+
+        public static string HttpRefreshToken(string URI, string requestParams)
+        {
+            var client = new RestClient();
+            var request = new RestRequest(URI,Method.POST);
+            request.AddHeader("content-type", "application/x-www-form-urlencoded");
+            request.AddParameter("application/x-www-form-urlencoded", requestParams, ParameterType.RequestBody);
+            var response = client.Execute(request);
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                return response.Content;
+            }
+            else
+            {
+                throw new Exception($"HttpStatusCode: {response.StatusCode}. Error: {response.Content}");
+            }
+        }
     }
 }
