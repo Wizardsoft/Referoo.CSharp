@@ -48,7 +48,7 @@ namespace Referoo.NetStandard
             if (Configuration.SandBox)
                 refreshEndpoint = "https://api.sandbox.referoo.com.au/oauth/token";
 
-            string requestParams = "client_id={clientId}&client_secret={clientSecret}&grant_type=refresh_token&refresh_token={Configuration.RefreshToken}";
+            string requestParams = $"client_id={clientId}&client_secret={clientSecret}&grant_type=refresh_token&refresh_token={Configuration.RefreshToken}";
             var json = HttpHelpers.HttpRefreshToken(refreshEndpoint, requestParams);
             var obj = JsonConvert.DeserializeObject<RefreshTokenResponse>(json);
             Configuration.AccessToken = obj.AccessToken;
