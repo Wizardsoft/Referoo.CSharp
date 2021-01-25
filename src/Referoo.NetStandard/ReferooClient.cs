@@ -29,6 +29,7 @@ namespace Referoo.NetStandard
             Configuration.BaseUrl = baseUrl;
             Configuration.AccessToken = accessToken;
             Configuration.RefreshToken = refreshToken;
+            Configuration.SandBox = sandBox;
         }
 
         public RefreshTokenResponse RefreshToken(string clientId, string clientSecret)
@@ -43,8 +44,12 @@ namespace Referoo.NetStandard
                 throw new Exception("Empty ClientSecret not Allowed");
 
             string refreshEndpoint = "https://api.referoo.com.au/oauth/token";
-            refreshEndpoint += $"?client_id={clientId}&client_secret={clientSecret}&grant_type=refresh_token&refresh_token={Configuration.RefreshToken}";
-            var json = HttpHelpers.HttpPost(refreshEndpoint, null);
+
+            if (Configuration.SandBox)
+                refreshEndpoint = "https://api.sandbox.referoo.com.au/oauth/token";
+
+            string requestParams = "client_id={clientId}&client_secret={clientSecret}&grant_type=refresh_token&refresh_token={Configuration.RefreshToken}";
+            var json = HttpHelpers.HttpRefreshToken(refreshEndpoint, requestParams);
             var obj = JsonConvert.DeserializeObject<RefreshTokenResponse>(json);
             Configuration.AccessToken = obj.AccessToken;
             Configuration.RefreshToken = obj.RefreshToken;
