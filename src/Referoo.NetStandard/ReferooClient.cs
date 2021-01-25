@@ -29,9 +29,10 @@ namespace Referoo.NetStandard
             Configuration.BaseUrl = baseUrl;
             Configuration.AccessToken = accessToken;
             Configuration.RefreshToken = refreshToken;
+            Configuration.SandBox = sandBox;
         }
 
-        public RefreshTokenResponse RefreshToken(string clientId, string clientSecret, bool sandBox = false)
+        public RefreshTokenResponse RefreshToken(string clientId, string clientSecret)
         {
             if (string.IsNullOrEmpty(Configuration.RefreshToken))
                 throw new Exception("Empty RefreshToken not Allowed");
@@ -44,7 +45,7 @@ namespace Referoo.NetStandard
 
             string refreshEndpoint = "https://api.referoo.com.au/oauth/token";
 
-            if (sandBox)
+            if (Configuration.SandBox)
                 refreshEndpoint = "https://api.sandbox.referoo.com.au/oauth/token";
 
             string requestParams = "client_id={clientId}&client_secret={clientSecret}&grant_type=refresh_token&refresh_token={Configuration.RefreshToken}";
