@@ -66,7 +66,7 @@ namespace Referoo.NetStandard
             var client = new RestClient(Configuration.BaseUrl);
             var request = new RestRequest(URI);
 
-            var settings = new JsonSerializerSettings() { ContractResolver = new NullToEmptyStringResolver() };
+            var settings = new JsonSerializerSettings() { ContractResolver = new NullToEmptyStringResolver(), NullValueHandling = NullValueHandling.Ignore };
             var jsonBody = JsonConvert.SerializeObject(body, settings);
 
             request.Parameters.Clear();
