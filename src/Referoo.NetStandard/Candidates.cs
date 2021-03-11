@@ -87,11 +87,11 @@ namespace Referoo.NetStandard
         /// </summary>
         /// <param name="data">Data of candidate to create</param>
         /// <returns></returns>
-        public GetCandidatesResponse CreateCandidate(PostCandidateParameter data)
+        public GetCandidatesResponseData CreateCandidate(PostCandidateParameter data)
         {
             var url = $"candidate";
             var json = HttpHelpers.HttpPost(url, data);
-            var retVal = JsonConvert.DeserializeObject<GetCandidatesResponse>(json);
+            var retVal = JsonConvert.DeserializeObject<GetCandidatesResponseData>(json);
             return retVal;
         }
 
