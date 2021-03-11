@@ -48,7 +48,7 @@ namespace Referoo.NetStandard.Models
         public string IpAddress { get; set; }
 
         [JsonProperty("response_date")]
-        public DateTimeOffset ResponseDate { get; set; }
+        public DateTimeOffset? ResponseDate { get; set; }
 
         [JsonProperty("questionnairesNum")]
         public int QuestionnairesNum { get; set; }
@@ -75,7 +75,7 @@ namespace Referoo.NetStandard.Models
         public string CustomData { get; set; }
 
         [JsonProperty("brandsNum")]
-        public int brandsNum { get; set; }
+        public int? brandsNum { get; set; }
     }
 
 

@@ -51,7 +51,8 @@ namespace Referoo.NetStandard
                 url += $"limit={limit}&";
 
             var json = HttpHelpers.HttpGet(url);
-            var retVal = JsonConvert.DeserializeObject<GetCandidatesResponse>(json);
+            var retVal = new GetCandidatesResponse();
+            retVal.Data = JsonConvert.DeserializeObject<GetCandidatesResponseData[]>(json);
             return retVal;
 
         }
@@ -61,11 +62,11 @@ namespace Referoo.NetStandard
         /// </summary>
         /// <param name="num">Numeric ID of the candidate to retrieve</param>
         /// <returns></returns>
-        public GetCandidatesResponse RetrieveCandidate(long num)
+        public GetCandidatesResponseData RetrieveCandidate(long num)
         {
             var url = $"candidate/{num}";
             var json = HttpHelpers.HttpGet(url);
-            var retVal = JsonConvert.DeserializeObject<GetCandidatesResponse>(json);
+            var retVal = JsonConvert.DeserializeObject<GetCandidatesResponseData>(json);
             return retVal;
         }
 
@@ -78,7 +79,8 @@ namespace Referoo.NetStandard
         {
             var url = $"candidate/{num}/referees";
             var json = HttpHelpers.HttpGet(url);
-            var retVal = JsonConvert.DeserializeObject<GetRefereesResponse>(json);
+            var retVal = new GetRefereesResponse();
+            retVal.Data = JsonConvert.DeserializeObject<GetRefereesResponseData[]>(json);
             return retVal;
         }
 
@@ -114,11 +116,11 @@ namespace Referoo.NetStandard
         /// <param name="num">Numeric ID of the candidate to update</param>
         /// <param name="data">You do not need to update all the variables, only pass those you wish to update.</param>
         /// <returns></returns>
-        public GetCandidatesResponse UpdateCandidate(long num, PutCandidateParameter data)
+        public GetCandidatesResponseData UpdateCandidate(long num, PutCandidateParameter data)
         {
             var url = $"candidate/{num}";
             var json = HttpHelpers.HttpPut(url, data);
-            var retVal = JsonConvert.DeserializeObject<GetCandidatesResponse>(json);
+            var retVal = JsonConvert.DeserializeObject<GetCandidatesResponseData>(json);
             return retVal;
         }
 
