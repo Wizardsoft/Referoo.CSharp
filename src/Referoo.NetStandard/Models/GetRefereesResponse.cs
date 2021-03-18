@@ -80,7 +80,7 @@ namespace Referoo.NetStandard.Models
         public int ReferenceCompleted { get; set; }
 
         [JsonProperty("response_date")]
-        public int ResponseDate { get; set; }
+        public DateTimeOffset ResponseDate { get; set; }
 
         [JsonProperty("custom_data")]
         public string CustomData { get; set; }
