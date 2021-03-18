@@ -47,9 +47,6 @@ namespace Referoo.NetStandard.Models
         [JsonProperty("ip_address")]
         public string IpAddress { get; set; }
 
-        [JsonProperty("response_date")]
-        public DateTimeOffset? ResponseDate { get; set; }
-
         [JsonProperty("questionnairesNum")]
         public int QuestionnairesNum { get; set; }
 

@@ -79,9 +79,6 @@ namespace Referoo.NetStandard.Models
         [JsonProperty("reference_completed")]
         public int ReferenceCompleted { get; set; }
 
-        [JsonProperty("response_date")]
-        public DateTimeOffset ResponseDate { get; set; }
-
         [JsonProperty("custom_data")]
         public string CustomData { get; set; }
 
