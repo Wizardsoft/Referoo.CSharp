@@ -56,7 +56,7 @@ namespace Referoo.NetStandard.Models
         public string IpAddress { get; set; }
 
         [JsonProperty("questionnairesNum")]
-        public string QuestionnairesNum { get; set; }
+        public int QuestionnairesNum { get; set; }
 
         [JsonProperty("membersNum")]
         public string MembersNum { get; set; }

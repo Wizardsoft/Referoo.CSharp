@@ -35,7 +35,7 @@ namespace Referoo.NetStandard.Models
         public string End { get; set; } //When the candidate stopped working with the referee
 
         [JsonProperty("questionnairesNum", Required = Required.AllowNull)]
-        public string QuestionnairesNum { get; set; } //The Questionnaire used for this reference.
+        public int QuestionnairesNum { get; set; } //The Questionnaire used for this reference.
 
         [JsonProperty("send_email_reminders", Required = Required.Always)]
         public bool SendEmailReminders { get; set; } //Set to one if the referee is receiving email reminders
