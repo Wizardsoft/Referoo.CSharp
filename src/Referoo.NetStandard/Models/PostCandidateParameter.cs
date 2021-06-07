@@ -58,6 +58,9 @@ namespace Referoo.NetStandard.Models
         [JsonProperty("custom_data")]
         public string CustomData { get; set; } //This property allows you to store custom values against the referee.
 
+        [JsonProperty("recruiter_email")]
+        public string RecruiterEmail { get; set; } //This property allows the candidate to be assigned to the email address provided instead.
+
     }
 
     public partial class PostCandidateWithRefereesParameter
