@@ -18,8 +18,7 @@ namespace Referoo.NetStandard
             if (offset != 0)
                 url += $"offset={offset}&";
 
-            if (limit != 50)
-                url += $"limit={limit}&";
+            url += $"limit={limit}&";
 
             return url;
         }
