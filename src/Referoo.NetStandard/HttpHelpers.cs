@@ -68,7 +68,6 @@ namespace Referoo.NetStandard
             var settings = new JsonSerializerSettings() { ContractResolver = new NullToEmptyStringResolver(), NullValueHandling = NullValueHandling.Ignore };
             var jsonBody = JsonConvert.SerializeObject(body, settings);
 
-            request.Parameters.Clear();
             request.AddHeader("Accept", "application/json");
             request.AddHeader("Authorization", $"Bearer {Configuration.AccessToken}");
             request.AddParameter("application/json", jsonBody, ParameterType.RequestBody);
@@ -128,10 +127,10 @@ namespace Referoo.NetStandard
         public static string HttpRefreshToken(string URI, string requestParams)
         {
             var client = new RestClient(URI);
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest();
             request.AddHeader("content-type", "application/x-www-form-urlencoded");
             request.AddParameter("application/x-www-form-urlencoded", requestParams, ParameterType.RequestBody);
-            var response = client.Execute(request);
+            var response = client.Post(request);
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 return response.Content;

@@ -4,18 +4,18 @@
     <id>$id$</id>
     <version>$version$</version>
     <title>$title$</title>
-    <authors>Wizardsoft</authors>
-    <owners>Wizardsoft</owners>
+    <authors>Recruit Wizard</authors>
+    <owners>Recruit Wizard</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">Apache-2.0</license>
     <projectUrl>https://github.com/Wizardsoft/Referoo.NetStandard</projectUrl>
     <description>Allows you to programatically interface with Referoo, the leading online reference-checking tool.</description>
     <releaseNotes></releaseNotes>
-    <copyright>Copyright Wizardsoft 2020</copyright>
+    <copyright>Copyright Recruit Wizard 2023</copyright>
     <dependencies>
         <group targetFramework=".NETStandard2.0">
-          <dependency id="RestSharp" version="106.0.0.0" />
-          <dependency id="Newtonsoft.Json" version="12.0.3.0" />
+          <dependency id="RestSharp" version="110.2.0" />
+          <dependency id="Newtonsoft.Json" version="13.0.3" />
         </group>
     </dependencies> 
   </metadata>
