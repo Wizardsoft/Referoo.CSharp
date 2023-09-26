@@ -55,6 +55,9 @@ namespace Referoo.NetStandard.Models
         [JsonProperty("candidate_locked")]
         public int CandidateLocked { get; set; }
 
+        [JsonProperty("archived")]
+        public int Archived { get; set; }
+
         [JsonProperty("custom_data")]
         public string CustomData { get; set; }
     }
