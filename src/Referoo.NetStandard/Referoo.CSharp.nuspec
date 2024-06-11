@@ -14,7 +14,7 @@
     <copyright>Copyright Recruit Wizard 2023</copyright>
     <dependencies>
         <group targetFramework=".NETStandard2.0">
-          <dependency id="RestSharp" version="110.2.0" />
+          <dependency id="RestSharp" version="111.2.0" />
           <dependency id="Newtonsoft.Json" version="13.0.3" />
         </group>
     </dependencies> 
