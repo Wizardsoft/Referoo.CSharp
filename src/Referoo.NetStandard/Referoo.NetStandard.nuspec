@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package >
   <metadata>
-    <id>$id$</id>
-    <version>$version$</version>
-    <title>$title$</title>
+    <id>Referoo.NetStandard</id>
+    <version>$version</version>
+    <title>Referoo.NetStandard</title>
     <authors>Recruit Wizard</authors>
     <owners>Recruit Wizard</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -11,9 +11,9 @@
     <projectUrl>https://github.com/Wizardsoft/Referoo.NetStandard</projectUrl>
     <description>Allows you to programatically interface with Referoo, the leading online reference-checking tool.</description>
     <releaseNotes></releaseNotes>
-    <copyright>Copyright Recruit Wizard 2023</copyright>
+    <copyright>Copyright Recruit Wizard 2024</copyright>
     <dependencies>
-        <group targetFramework=".NETStandard2.0">
+        <group targetFramework=".NETStandard2.1">
           <dependency id="RestSharp" version="111.2.0" />
           <dependency id="Newtonsoft.Json" version="13.0.3" />
         </group>

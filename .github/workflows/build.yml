@@ -1,0 +1,74 @@
+name: Build & Test
+
+on:
+  push:
+    branches:    
+      - '**' # matches every branch  
+  workflow_dispatch:      
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.WizardsoftGitHubToken }}
+        fetch-depth: 0
+        submodules: 'recursive'
+        
+    - name: Setup .NET 8
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+        
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v1
+      with:
+        versionSpec: '5.x'
+        
+    - name: Display GitVersion config
+      id:   gitversion
+      uses: gittools/actions/gitversion/execute@v1
+      with:
+        useConfigFile: true
+        configFilePath: GitVersion.yml  
+
+    - name: Display GitVersion outputs
+      run: |
+        echo "FullSemVer: ${{ steps.gitversion.outputs.fullSemVer }}"
+        echo "InformationalVersion: ${{ steps.gitversion.outputs.informationalVersion }}"
+        echo "NuGetVersionV2: ${{ env.GitVersion_NuGetVersionV2 }}"
+        
+    - name: Set VERSION variable from tag
+      run: echo "VERSION=${{ env.GitVersion_NuGetVersionV2 }}" >> $GITHUB_ENV
+
+    - name: Find and Replace Version in NuSpec
+      uses: richardrigutins/replace-in-files@v2
+      with:
+        files: 'src/Referoo.NetStandard/Referoo.NetStandard.nuspec'
+        search-text: '$version'
+        replacement-text: ${{ env.GitVersion_NuGetVersionV2 }}                  
+        
+    - name: Restore dependencies
+      run: dotnet restore src/Referoo.NetStandard.sln
+      
+    - name: Build
+      run: dotnet build src/Referoo.NetStandard.sln --configuration Release /p:Version=${VERSION} --no-restore
+
+    - name: Pack
+      run: dotnet pack src/Referoo.NetStandard/Referoo.NetStandard.csproj -p:PackageVersion=${VERSION} -p:IncludeReferencedProjects --configuration Release --output packaging 
+               
+    - name: Push - Feedz.io (Prerelease Only)
+      if: github.ref != 'refs/heads/main'
+      run: dotnet nuget push --source https://f.feedz.io/recruitwizard/dependencies/nuget/index.json --api-key ${{ secrets.FEEDZ_IO_APIKEY }} packaging/*.nupkg
+
+    - name: Push - Nuget.Org (Main Only)
+      if: github.ref == 'refs/heads/main'
+      run: dotnet nuget push --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }} packaging/*.nupkg
+
+    - name: Create a Release in GitHub
+      if: github.ref == 'refs/heads/main'
+      run: gh release create ${{ steps.gitversion.outputs.GitVersion_NuGetVersionV2 }} --target ${{ github.sha }} 
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
