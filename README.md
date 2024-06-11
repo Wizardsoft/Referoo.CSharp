@@ -1,6 +1,6 @@
 # Referoo.NetStandard
 
-[![Build status](https://dev.azure.com/wizardsoftglobal/Recruit%20Wizard/_apis/build/status/Referoo.NetStandard)](https://dev.azure.com/wizardsoftglobal/Recruit%20Wizard/_build/latest?definitionId=51)
+[![Build & Test](https://github.com/RecruitWizard/Referoo.NetStandard/actions/workflows/build.yml/badge.svg)](https://github.com/RecruitWizard/Referoo.NetStandard/actions/workflows/build.yml)
 [![Nuget](https://img.shields.io/nuget/v/Referoo.NetStandard)](https://www.nuget.org/packages/Referoo.NetStandard)
 [![NuGet](https://img.shields.io/nuget/dt/Referoo.NetStandard.svg)](https://www.nuget.org/packages/Referoo.NetStandard/)
 
